@@ -7,21 +7,45 @@
   pointer-events: none;
 }
 
+.Comics-template{
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.grid-container{
+  display: grid;
+  row-gap: 50px;
+  grid-template-columns: auto auto auto;
+  background-color: #660b0f;
+  padding: 10px;
+}
+
+.grid-item{
+  background-color: #FFFFFF;
+  border: 1px solid #660b0f;
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
+  .Comics-template {
+    animation: Comics-template-spin infinite 20s linear;
+  }
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  background-color: #333333;
+  min-height: 12vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: #FFFFFF;
 }
 
 .App-link {
@@ -29,6 +53,16 @@
 }
 
 @keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+@keyframes Comics-template-spin {
   from {
     transform: rotate(0deg);
   }
