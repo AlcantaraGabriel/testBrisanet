@@ -20,25 +20,22 @@ function App() {
           Learn React
         </a> */}
       </header>
+      
+      
       <div className="grid-container">
         <div className="grid-item">
-          <img src={logo} className="Comics-template" alt="comics" />
+          <div className="card">
+            <img src={logo}></img>
+            <div className="card-info" alt="Avatar">
+              <h4><b>Comics</b></h4>
+              <p>Descrition</p>
+            </div>
+          </div>
         </div>
         <div className="grid-item">
           <img src={logo} className="Comics-template" alt="comics" />
         </div>
-        <div className="grid-item">
-          <img src={logo} className="Comics-template" alt="comics" />
-        </div>
-        <div className="grid-item">
-          <img src={logo} className="Comics-template" alt="comics" />
-        </div>
-        <div className="grid-item">
-          <img src={logo} className="Comics-template" alt="comics" />
-        </div>
-        <div className="grid-item">
-          <img src={logo} className="Comics-template" alt="comics" />
-        </div>
+        
       </div>
     </div>
   );

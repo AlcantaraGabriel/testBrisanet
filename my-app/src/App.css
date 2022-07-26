@@ -28,6 +28,22 @@
   text-align: center;
 }
 
+.card{
+  background-color: #660b0f;
+  box-shadow: 0 4px 8px 0 #b95a5f;
+  transition: 0.3s;
+  width: 40%;
+}
+
+.card:hover{
+  box-hover: 0 8px 16px 0 #bda4a5;
+}
+
+.card-info{
+  background-color: #FFFFFF;
+  padding: 2px 16px;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
