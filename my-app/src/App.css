@@ -8,7 +8,7 @@
 }
 
 .Comics-template{
-  height: 40vmin;
+  height: 15vmin;
   pointer-events: none;
 }
 
@@ -35,9 +35,9 @@
   width: 40%;
 }
 
-.card:hover{
+/*.card:hover{
   box-hover: 0 8px 16px 0 #bda4a5;
-}
+} */
 
 .card-info{
   background-color: #FFFFFF;
