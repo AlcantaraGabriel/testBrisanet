@@ -3,13 +3,11 @@ import md5 from 'md5';
 import logo from './logo.svg';
 import './App.css';
 
-const publicurl ='https://gateway.marvel.com:443/v1/public/characters?';
 const publickey = '53049753204b6dc4157a9e4e02921ef6';
 const  privatekey = 'aa67cee82eccabf9abd26b56abe7128a94246da2';
 
 const time = Number(new Date());
 const hash = md5(time+privatekey+publickey);
-
 
 
 class App extends Component {   
@@ -27,16 +25,19 @@ class App extends Component {
    async componentDidMount() {
     const headers = {'Content-Type': 'application/json'}
     const response = await fetch('https://gateway.marvel.com:443/v1/public/characters?ts='+time+'&apikey='+publickey+'&hash='+hash, {headers});
-    const data = await response.json();
-      this.setState({totalReactPackages: data});
+    const dataJson = await response.json();
+    this.setState({totalReactPackages: dataJson.data.results});
+    //alert(data);
   }
+  
   
   render() {
     // See all react packages
-    const { totalReactPackages } = this.state;
-    return (
-      
+    const { totalPackages } = this.state;
+    return (   
     <div className="App">
+
+      
       <header className="App-header">
         {/* comment link
         <img src={logo} className="App-logo" alt="logo" />
@@ -69,15 +70,15 @@ class App extends Component {
         <div className="card">
               <img src={logo} className="Comics-template" alt="comics" />            
               <div className="card-info" alt="Avatar">
-              <h4><b>Comics</b></h4>
-              
+              <h4><b>sdkjosajd</b></h4>
+
 
             </div>
           </div>
         </div>
         
       </div>
-
+      
     </div>
     
   );
