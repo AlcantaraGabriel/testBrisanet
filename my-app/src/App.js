@@ -7,6 +7,7 @@ import './App.css';
 
 import md5 from 'md5';
 
+// It's my API, example:
 const publickey = '53049753204b6dc4157a9e4e02921ef6';
 const  privatekey = 'aa67cee82eccabf9abd26b56abe7128a94246da2';
 
