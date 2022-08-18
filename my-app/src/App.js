@@ -17,10 +17,13 @@ const  privatekey = 'aa67cee82eccabf9abd26b56abe7128a94246da2';
 const time = Number(new Date());
 const hash = md5(time+privatekey+publickey);
 
-const loadCharacter = async ({ characterId }, { signal }) => {
-  const response = await fetch('https://gateway.marvel.com:443/v1/public/comics?ts='+time+'&apikey='+publickey+'&hash='+hash);
-  if (!response.ok) throw new Error(response.statusText)
+const loadCharacter = async ( { signal }) => {
+  const response = await fetch('https://gateway.marvel.com:443/v1/public/comics?format=digital%20comic&formatType=comic&orderBy=title&ts='+time+'&apikey='+publickey+'&hash='+hash);
+  try{
     return response.json();
+  }catch(err){
+    return response.statusText;
+  }
 }
 
 class App extends Component {   
@@ -61,19 +64,40 @@ class App extends Component {
               {data => (
                 <div className='resp'>
                   <strong>Player data:</strong>
-                      
-                      {JSON.stringify(data.data.results, null, 2).split(",").map((i, index) => 
-                       <ul>
-                        {i.split("id:").map((j) =>
+                  <ul>
+                      {
+                        JSON.stringify(data.data.results, 2).split("\"id\":").map((i, index) => 
+                                
+                                      <li>
+                                        <ul> 
+                                        {i.split("\,\"").map((j) => 
+                                          <li>
+                                            <ul>
+                                            {j.split(":").map((l) =>
+                                                <li>{l}</li>
+                                            )}
+                                            </ul>
+                                          </li>
+                                        )}
+                                        </ul>
+                                      </li>
+                                  
+                       /* <p> 
+                         {i.split(",").map((j) =>
                            // "id": 82967, "title": "Marvel Previews (2017)"
                            // } ]"thumbnail": { "path": "http://i.annihil.us/u/prod/marvel/i/mg/c/80/5e3d7536c8ada""extension": "jpg" }
-                           // "images": [ { "path": "http://i.annihil.us/u/prod/marvel/i/mg/c/80/5e3d7536c8ada" "extension": "jpg" } ]
-                           <li>{j}</li>
+                           // "images": [ { "path": "http://i.annihil.us/u/prod/marvel/i/mg/c/80/5e3d7536c8ada" "extension": "jpg" } ]                      
+                                    <ul>
+                                    {j.map((l) =>
+                                      
+                                      <li> {l}</li>
+                                    )}
+                                    </ul>                              
                          )}
-                       </ul>   
+                         </p> */
                     
                       )};
-                      
+                      </ul> 
                 </div> 
               )}
             </Async.Fulfilled>
