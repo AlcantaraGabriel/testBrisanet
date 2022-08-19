@@ -46,6 +46,157 @@
   background-color: #FFFFFF;
   padding: 64px 32px;
 }
+/* ul
+  li
+
+.digitalId{
+  display: none;
+} 
+
+.title
+*/
+.issueNumber{
+  display: none;
+}
+.modified{
+  display: none;
+}
+.isbn{
+  display: none;
+}
+.upc{
+  display: none;
+}
+.diamondCode{
+  display: none;
+}
+.variantDescription{
+  display: none;
+} 
+/*
+ .description{
+  display: none;
+} 
+*/
+.modifie{
+  display: none;
+} 
+ .isbn .upc{
+  display: none;
+}  
+.ean{
+  display: none;
+} 
+ .issn{
+  display: none;
+} 
+ .format{
+  display: none;
+} 
+ .pageCount{
+  display: none;
+} 
+.textObjects{
+  display: none;
+} 
+ .language{
+  display: none;
+} 
+ .text{
+    display: none;
+ }
+  .resourceURI{
+  display: none;
+} 
+.urls{
+  display: none;
+} 
+ .url{
+  display: none;
+} 
+ .series{
+  display: none;
+} 
+ .variants{
+  display: none;
+} 
+.collections{
+  display: none;
+} 
+ .collectedIssues{
+  display: none;
+} 
+ .dates{
+  display: none;
+} 
+.date{
+  display: none;
+} 
+.prices{
+  display: none;
+} 
+.price{
+  display: none;
+} 
+path
+.extension{
+  display: none;
+} 
+.images{
+  display: none;
+} 
+.extension{
+  display: none;
+} 
+.creators{
+  display: none;
+} 
+.collectionURI{
+  display: none;
+} 
+.items{
+  display: none;
+} 
+.role{
+  display: none;
+} 
+.name{
+  display: none;
+} 
+.characters{
+  display: none;
+} 
+.collectionURI{
+  display: none;
+} 
+.items{
+  display: none;
+} 
+.returned{
+  display: none;
+} 
+.stories{
+  display: none;
+}
+.collectionURI{
+  display: none;
+} 
+.type{
+  display: none;
+} 
+.available{
+  display: none;
+} 
+
+.events{
+  display: none;
+}
+.collectionURI {
+  display: none;
+} 
+
+
+
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {

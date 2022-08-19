@@ -64,19 +64,15 @@ class App extends Component {
               {data => (
                 <div className='resp'>
                   <strong>Player data:</strong>
-                  <ul>
+                  <ul class="card_li">
                       {
                         JSON.stringify(data.data.results, 2).split("\"id\":").map((i, index) => 
                                 
-                                      <li>
+                                      <li class="card_info">
                                         <ul> 
                                         {i.split("\,\"").map((j) => 
-                                          <li>
-                                            <ul>
-                                            {j.split(":").map((l) =>
-                                                <li>{l}</li>
-                                            )}
-                                            </ul>
+                                          <li class={j.split("\":")[0]}>
+                                               {j}
                                           </li>
                                         )}
                                         </ul>
