@@ -4,6 +4,7 @@
 /node_modules
 /.pnp
 *.txt
+/package-lock.json
 .pnp.js
 .vscode/launch.json
 # testing
