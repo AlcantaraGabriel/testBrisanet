@@ -1,6 +1,6 @@
 import './CSS/Modal.css';
-import openMap from 'react-native-open-maps';
-
+//import openMap from 'react-native-open-maps';
+/*
 const showPostion = function(pos: any){
  	openMap({ latitude: pos.coords.latitude, longitude: pos.coords.longitude });
  	//pos.coords.accuracy
@@ -13,6 +13,7 @@ const location =  function () {
 	}
 }
 
+*/
 
 const Modal = ({ idValue, divclassName, children }) => {
 
@@ -37,7 +38,7 @@ const Modal = ({ idValue, divclassName, children }) => {
       <section id={idValue} className={"modal-main-"+divclassName}>
         {children}
         <p>
-        	<button className="btn" onClick={() => location()}>Show on the Maps</button>
+
         	<button className="btn" onClick={() => toggleModal(idValue)} type="button"   >
                               		            Close
                 </button>
