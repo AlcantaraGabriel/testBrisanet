@@ -1,16 +1,29 @@
 {
   "name": "my-app",
-  "version": "0.1.0",
+  "version": "1.0.1",
+  "description": "It's a test applicattion by Gabriel Alcântara Silva to Brisanet",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^5.16.4",
-    "@testing-library/react": "^13.3.0",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
-    "http-proxy-middleware": "^2.0.6",
+    "@types/jest": "^29.2.5",
+    "@types/node": "^18.11.18",
+    "@types/react": "^18.0.26",
+    "@types/react-dom": "^18.0.10",
+    "dotenv": "^16.0.3",
+    "eslint": "^8.31.0",
+    "install": "^0.13.0",
+    "jquery": "^3.6.3",
     "md5": "^2.3.0",
+    "npm": "^9.2.0",
+    "path-browserify": "^1.0.1",
     "react": "^18.2.0",
+    "react-async": "^10.0.1",
     "react-dom": "^18.2.0",
-    "react-scripts": "^2.1.3",
+    "react-native-open-maps": "^0.4.0",
+    "react-scripts": "5.0.1",
+    "typescript": "^4.9.4",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -36,7 +49,18 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
   "author": "Gabriel Alcântara Silva",
   "license": "",
+  "bugs": {
+    "url": "https://github.com/AlcantaraGabriel/testBrisanet/issues"
+  },
+  "homepage": ".",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlcantaraGabriel/testBrisanet.git"
+  },
+  "keywords": [
+    "Reactjs"
+  ]
 }

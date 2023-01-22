@@ -13,24 +13,6 @@
   pointer-events: none;
 }
 
-.grid-container{
-  display: grid;
-  row-gap: 50px;
-  grid-template-columns: auto auto auto;
-  background-color: #660b0f;
-  padding: 40px;
-}
-
-.grid-item{
-  background-color: #b13d3d;
-  border: 1px solid #660b0f;
-  padding: 20px;
-  font-size: 30px;
-  text-align: center;
-  width: 25%;
-  height: 90%;
-}
-
 .card{
   background-color: #660b0f;
   box-shadow: 0 4px 8px 0 #b95a5f;
@@ -42,159 +24,71 @@
   box-hover: 0 8px 16px 0 #bda4a5;
 } */
 
-.card-info{
-  background-color: #FFFFFF;
-  padding: 64px 32px;
+.card_li{
+	grid-column-start: 1;
+ 	grid-column-end: 4;
+ 	grid-row-start: 1;
+ 	grid-row-end: 3;
+	background-color: navy;
+	color: white;
+	width: 170px;
+	height: 300px;
+	text-align: left;
+
+	  
+}
+
+
+.card_li_mobile{
+	grid-column-start: 1;
+ 	grid-column-end: 4;
+ 	grid-row-start: 1;
+ 	grid-row-end: 3;
+	background-color: navy;
+	color: white;
+	width: 165px;
+	height: 300px;
+	text-align: left;
+	  
+}
+
+.catalog{
+  background-color: black;
+  display: grid;
+  grid-template-columns: auto auto auto auto auto auto;
+
+
+}
+
+.catalog-mobile{
+  background-color: black;
+  display: grid;
+  grid-template-columns: auto auto;
+
+
+}
+
+
+.imageComics{
+	width: 125px;
 }
 /* ul
   li
-
-.digitalId{
-  display: none;
-} 
-
-.title
 */
-.issueNumber{
-  display: none;
-}
-.modified{
-  display: none;
-}
-.isbn{
-  display: none;
-}
-.upc{
-  display: none;
-}
-.diamondCode{
-  display: none;
-}
-.variantDescription{
-  display: none;
-} 
-/*
- .description{
-  display: none;
-} 
-*/
-.modifie{
-  display: none;
-} 
- .isbn .upc{
-  display: none;
-}  
-.ean{
-  display: none;
-} 
- .issn{
-  display: none;
-} 
- .format{
-  display: none;
-} 
- .pageCount{
-  display: none;
-} 
-.textObjects{
-  display: none;
-} 
- .language{
-  display: none;
-} 
- .text{
-    display: none;
- }
-  .resourceURI{
-  display: none;
-} 
-.urls{
-  display: none;
-} 
- .url{
-  display: none;
-} 
- .series{
-  display: none;
-} 
- .variants{
-  display: none;
-} 
-.collections{
-  display: none;
-} 
- .collectedIssues{
-  display: none;
-} 
- .dates{
-  display: none;
-} 
-.date{
-  display: none;
-} 
-.prices{
-  display: none;
-} 
-.price{
-  display: none;
-} 
-path
-.extension{
-  display: none;
-} 
-.images{
-  display: none;
-} 
-.extension{
-  display: none;
-} 
-.creators{
-  display: none;
-} 
-.collectionURI{
-  display: none;
-} 
-.items{
-  display: none;
-} 
-.role{
-  display: none;
-} 
-.name{
-  display: none;
-} 
-.characters{
-  display: none;
-} 
-.collectionURI{
-  display: none;
-} 
-.items{
-  display: none;
-} 
-.returned{
-  display: none;
-} 
-.stories{
-  display: none;
-}
-.collectionURI{
-  display: none;
-} 
-.type{
-  display: none;
-} 
-.available{
-  display: none;
-} 
 
-.events{
-  display: none;
-}
-.collectionURI {
-  display: none;
-} 
 
+.title{
+	font-size: larger;
+	list-style-type: none; 
+}
+.description, .digitalId{
+	display: none;
+	list-style-type: none; 
+}
+
+.thumbnail{
+	list-style-type: none;
+}
 
 
 
@@ -208,7 +102,8 @@ path
 }
 
 .App-header {
-  background-color: #333333;
+
+  background-color: darkorange;
   min-height: 12vh;
   display: flex;
   flex-direction: column;
@@ -216,6 +111,7 @@ path
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: #FFFFFF;
+
 }
 
 .App-link {
@@ -232,11 +128,4 @@ path
 }
 
 
-@keyframes Comics-template-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+

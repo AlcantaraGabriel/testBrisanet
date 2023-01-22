@@ -1,133 +1,146 @@
 import React, { Component } from 'react';
+import Modal from './components/Modal';
+
+//require('dotenv').config()
+import './App.css';
 import logo from './logo.svg';
-import Async, { useAsync } from "react-async"
+import md5 from 'md5';
+import Async from "react-async"
 //import { SectionList, StyleSheet, Text, View } from 'react-native';
 
 //import {DataJson} from './DataJson'
-import './App.css';
-
-import md5 from 'md5';
-
 // It's my API, example:
 const publickey = '53049753204b6dc4157a9e4e02921ef6';
 const  privatekey = 'aa67cee82eccabf9abd26b56abe7128a94246da2';
-// AIzaSyBHSUEp14j5KEOlOrx93LIr7FEZueD9rv0
-// https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522,151.1957362&radius=500&
-// types=food&name=harbour&key=AIzaSyBHSUEp14j5KEOlOrx93LIr7FEZueD9rv0
 
 const time = Number(new Date());
 const hash = md5(time+privatekey+publickey);
 
-const loadCharacter = async ( { signal }) => {
-  const response = await fetch('https://gateway.marvel.com:443/v1/public/comics?format=digital%20comic&formatType=comic&orderBy=title&ts='+time+'&apikey='+publickey+'&hash='+hash);
-  try{
-    return response.json();
-  }catch(err){
-    return response.statusText;
-  }
+const loadComics = async ( { signal }) => {
+   const response = await fetch('https://gateway.marvel.com:443/v1/public/comics?format=comic&formatType=comic&orderBy=title&ts='+time+'&apikey='+publickey+'&hash='+hash);
+   try{
+     return response.json();
+   }catch(err){
+     return response.statusText;
+   }
 }
 
-class App extends Component {   
+
+class App extends Component {
+
+   
   constructor(props) {
     super(props);
     this.state = {
-      error: null,
-      isLoaded: false,
-      //items: new DataJson(),
-      //totalReactPackages: items
+      cart: 0,
     };
-   // this.state.items = this.state.items.componentDidMount() 
-   }
-
-
+    
+    this.addCart = this.addCart.bind(this);
+  }
   
+  
+   addCart = () => {
+   	this.setState({ 
+   		cart: this.state.cart + 1
+   	});
+   };
+   
+   removeCart = () => {
+  	 this.setState({ 
+   		cart: this.state.cart - 1
+   	});
+   };
+   
+   
+   toggleModal = (id) => {
+    const modal = document.getElementById(id);
+    if(modal.classList.value === 'modal display-block'){
+    
+    modal.classList.value ='modal display-none';
+    
+    }else{
+        modal.classList.value ='modal display-block';
+    }
+
+
+  }
+
+   
   render() {
     // See all react packages
-
+    
     return (
       <div className='App'>
         <div className='App-header'>  
-                    
-        </div>
-        <div className='grid-container'>
-          <div className='grid-item'>
-            <div className="card">
-              <img src={logo} className="Comics-template" alt="comics" />            
-                {/* <div className="card-info" alt="Avatar"/> */}
-                <h4></h4>
-            </div>
-          </div>
+                    <p>Magazines WebSite by Gabriel</p>
+                   <p>Cart: {this.state.cart}</p>
         </div>
 
-        <Async promiseFn={loadCharacter} characterId={1011334}>
-          <Async.Pending>Loading...</Async.Pending>
-            <Async.Fulfilled>
-              {data => (
-                <div className='resp'>
-                  <strong>Player data:</strong>
-                  <ul class="card_li">
-                      {
-                        JSON.stringify(data.data.results, 2).split("\"id\":").map((i, index) => 
-                                
-                                      <li class="card_info">
-                                        <ul> 
-                                        {i.split("\,\"").map((j) => 
-                                          <li class={j.split("\":")[0]}>
-                                               {j}
-                                          </li>
-                                        )}
-                                        </ul>
-                                      </li>
-                                  
-                       /* <p> 
-                         {i.split(",").map((j) =>
-                           // "id": 82967, "title": "Marvel Previews (2017)"
-                           // } ]"thumbnail": { "path": "http://i.annihil.us/u/prod/marvel/i/mg/c/80/5e3d7536c8ada""extension": "jpg" }
-                           // "images": [ { "path": "http://i.annihil.us/u/prod/marvel/i/mg/c/80/5e3d7536c8ada" "extension": "jpg" } ]                      
-                                    <ul>
-                                    {j.map((l) =>
-                                      
-                                      <li> {l}</li>
-                                    )}
-                                    </ul>                              
-                         )}
-                         </p> */
-                    
-                      )};
-                      </ul> 
-                </div> 
-              )}
-            </Async.Fulfilled>
-          <Async.Rejected>{error => `Something went wrong: ${error.message}`}</Async.Rejected>
+        <Async promiseFn={loadComics} >
+          {({ data, error, isPending}) => {
+          	if (isPending) return "Loading"
+          	if (error) return `Something went wrong: ${error.message}`
+          	if (data)
+          	   return (
+          	   	<div className={window.innerWidth > 500 ? "catalog" : "catalog-mobile"}>
+          	   		{
+		  	   		data.data.results.map((content, index) => (
+
+		  	   		<div className="catalog-item" key={index}>
+			  	   		<ol className={ window.innerWidth > 500 ? "card_li" : "card_li_mobile" } key={index}><br/><br/>
+			  	   			<li className="thumbnail">
+			  	   				<img className="imageComics" alt="images" src={content.thumbnail.path +'.' + content.thumbnail.extension || logo }/>
+			  	   			</li>
+			  	   			<li className="id" hidden>
+								{content.id}          	   			
+			  	   			</li>
+			  	   			<li className="title">
+								{content.title}          	   			
+			  	   			</li>
+			  	   			<br/><br/>
+			  	   		 </ol>
+			  	   		
+	  	   	         <Modal idValue={content.id} divclassName={content.id}>
+			  	   	         	
+			  	   	           <p>
+			  	   	             <img className="imageComics" alt="images" src={content.thumbnail.path +'.' + content.thumbnail.extension}/>
+                     	        		   </p>
+                     	        		   <p>
+                     	        		      <label><b>Description:</b></label><br/>
+                     	        		      {content.description}
+                     	        		   </p>
+                     	        		   <p>
+                     	        		     <label><b>Price(USD):</b></label><br/> $ {content.prices[0].price}
+                     	        		   </p>
+                     	        		  </Modal> 
+                   				
+                   				<button className="btn" onClick={this.addCart} type="button" data-modal={'"'+content.id+'"'}>
+                              		            Add
+                    				</button>
+                   				
+                    				<button className="btn" onClick={() => this.toggleModal(content.id)} type="button"   >
+                              		            Open
+                    				</button>
+                    				
+          	   	   		</div>
+
+          	   			)) //map
+          	   		} 
+          	   	     
+          	   	</div>
+          	   ) //return
+          	return null
+          }}
         </Async>
-                
-            
-    </div>
- 
-      
+     </div>  
     );
+    
+    
+    
   }
+  
+ 
 }
 
-/* const styles = StyleSheet.create({
-  container: {
-   flex: 1,
-   paddingTop: 22
-  },
-  sectionHeader: {
-    paddingTop: 2,
-    paddingLeft: 10,
-    paddingRight: 10,
-    paddingBottom: 2,
-    fontSize: 14,
-    fontWeight: 'bold',
-    backgroundColor: 'rgba(247,247,247,1.0)',
-  },
-  item: {
-    padding: 10,
-    fontSize: 18,
-    height: 44,
-  },
-})
-*/
+
 export default App;
